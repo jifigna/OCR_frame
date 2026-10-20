@@ -1,0 +1,49 @@
+OCR UPWELLING v2 (frame) — OCR Lu + inclinación (sin relés) — LPKF ProtoMat S63
+GIPIS / UNPSJB — campaña CONAE oct 2026
+
+Tamaño: 109.6 x 85.6 mm.  Material: FR4 1,6 mm, cobre 35 µm. SIN metalizado.
+Pista mínima 0.7 mm, aislación mínima 0,6 mm, borde 1 mm.
+
+ARCHIVOS (gerber/)
+  *-B_Cu.gbl        cobre de ABAJO: todas las pistas + plano de GND. Es la cara a fresar.
+  *-F_Cu.gtl        cobre de ARRIBA: vacío (simple faz), no se fresa.
+  *-Edge_Cuts.gm1   contorno (fresa de corte).
+  *-PTH.drl         agujeros de pads y vías (Excellon, mm, decimal).
+  *-NPTH.drl        agujeros sin cobre: M3 de montaje y los 4 del módulo SD.
+  *-drl_map.pdf     mapa de agujeros.
+  Gerber vistos desde ARRIBA (sin espejar): en CircuitPro asignar B_Cu a BottomLayer
+  y el programa lo espeja solo. Origen absoluto (el de KiCad), igual para todos.
+
+CÓMO FABRICARLA
+  SIMPLE FAZ: fresar solo B_Cu (todas las pistas + plano de GND) + taladros +
+  contorno. Los zócalos y las borneras se sueldan abajo.
+  Alambres aislados del lado de componentes, con las puntas soldadas abajo:
+  8 puentes W1-W8, cada uno con sus 2 pads (en el esquemático y en la
+  plantilla de montaje):
+  W1 (I2C SCL) y W2 (I2C SDA) pasan por arriba del haz de la SD; W3 lleva el 5 V del
+  buck a la SD; W4 une el GND del RTC al plano; W5 lleva el Vext al RTC, ICM y
+  GY-511. Sus 2 pads están en la plantilla.
+
+MECHAS
+  0.80 mm  x 28   pad
+  1.00 mm  x 92   pad
+  1.20 mm  x 10   pad
+  1.40 mm  x  4   pad
+  2.20 mm  x 13   sin cobre
+
+PUENTES W6-W8 (del ruteo) — mm desde la esquina superior izquierda
+  W6   SDA_B    ( 11.8,  62.3) → ( 49.7,  39.8)  48.7 mm
+  W7   GND      ( 58.0,  60.0) → ( 70.5,  60.0)  12.5 mm
+  W8   GND      ( 96.4,  64.9) → ( 96.4,  80.4)  15.5 mm
+
+ANTES DE FRESAR
+  Imprimir plantilla_1a1_montaje_arriba.pdf al 100 % (sin "ajustar a página") y
+  apoyar los módulos reales: Heltec V4, microSD HW-125, RTC ZS-042, ICM-20689,
+  GY-511, buck y MAX3232. Medir con calibre una distancia
+  conocida en el papel (OJO: la Xerox 3345 achica al 95 % si se manda el PDF por
+  CUPS; mandarla en PostScript directo).
+  Sin medir todavía: los pads AUX de la Heltec (GPIO17/18) y el orden de pines de
+  la SD (Juan tenía GND arriba) y del GY-511.
+
+PROYECTO KiCad 10 (kicad/): esquemático + PCB + librerías del proyecto.
+Se genera por script (gen_board.py, gen_sch.py): no editar a mano.

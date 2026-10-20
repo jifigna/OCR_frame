@@ -1,0 +1,10 @@
+(version 1)
+# pista normal 0.92 / 1.38; mínimo 0.65 porque Freerouting angosta a 0.69 entre pines vecinos
+(rule fresado_lpkf
+  (constraint clearance (min 0.6mm))
+  (constraint track_width (min 0.65mm)))
+(rule plano_gnd
+  (condition "A.Type == 'Zone' || B.Type == 'Zone'")
+  (constraint clearance (min 0.5mm)))
+(rule borde
+  (constraint edge_clearance (min 1.0mm)))

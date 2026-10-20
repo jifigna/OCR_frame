@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ocr_up") (type "KiCad") (uri "${KIPRJMOD}/ocr_up.pretty") (options "") (descr "Nodo B"))
+)
