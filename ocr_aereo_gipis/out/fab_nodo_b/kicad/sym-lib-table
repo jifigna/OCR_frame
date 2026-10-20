@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "nodo_b") (type "KiCad") (uri "${KIPRJMOD}/nodo_b.kicad_sym") (options "") (descr "Nodo B"))
+)

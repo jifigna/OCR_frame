@@ -1,0 +1,13 @@
+# intermedios que regenera make.sh
+out/*.dsn
+out/*.ses
+out/*.log
+out/net_sch.xml
+out/netlist.txt
+out/ruteo.svg
+out/esquematico.svg
+__pycache__/
+*.kicad_prl
+*-backups/
+~*.lck
+fp-info-cache

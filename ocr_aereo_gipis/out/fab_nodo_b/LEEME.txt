@@ -1,0 +1,43 @@
+NODO B (bote) — OCR 0222 Ed + PAR 231 — placa para la LPKF ProtoMat S63
+GIPIS / UNPSJB — campaña CONAE oct 2026
+
+Tamaño: 104.1 x 90.1 mm.  Material: FR4 1,6 mm, cobre 35 µm. SIN metalizado.
+Pista mínima 0.9 mm, aislación mínima 0,6 mm, borde 1 mm.
+
+ARCHIVOS (gerber/)
+  *-B_Cu.gbl        cobre de ABAJO: todas las pistas + plano de GND. Es la cara a fresar.
+  *-F_Cu.gtl        cobre de ARRIBA: solo pads y los puentes (ver abajo).
+  *-Edge_Cuts.gm1   contorno (fresa de corte).
+  *-PTH.drl         agujeros de pads y vías (Excellon, mm, decimal).
+  *-NPTH.drl        agujeros sin cobre: M3 de montaje y los 4 del módulo SD.
+  *-drl_map.pdf     mapa de agujeros.
+  Gerber vistos desde ARRIBA (sin espejar): en CircuitPro asignar B_Cu a BottomLayer
+  y el programa lo espeja solo. Origen absoluto (el de KiCad), igual para todos.
+
+CÓMO FABRICARLA
+  Opción 1 (preferida): placa SIMPLE FAZ, cobre abajo. Fresar solo B_Cu + taladros +
+    contorno. Los puentes se hacen con alambre aislado del lado de componentes.
+  Opción 2: placa DOBLE FAZ. Además fresar F_Cu (aislación alrededor de cada pad,
+    si no la cara de arriba cortocircuita todos los pines). Las pistas de F_Cu ya son
+    los puentes; en cada vía pasar un alambre y soldarlo de los dos lados.
+  En los dos casos los zócalos se sueldan SOLO abajo.
+
+MECHAS
+  0.80 mm  x  6   pad
+  1.00 mm  x 80   pad
+  1.20 mm  x 22   pad
+  2.20 mm  x  4   sin cobre
+  3.20 mm  x  4   sin cobre
+
+PUENTES (0) — coordenadas en mm desde la esquina superior izquierda
+
+ANTES DE FRESAR
+  Imprimir plantilla_1a1_montaje_arriba.pdf al 100 % (sin "ajustar a página") y
+  apoyar los módulos reales: Heltec V4, ADS1115, ICM-20689, UART MUX 2 click,
+  microSD HW-125 y D-SUN. Medir con calibre una distancia conocida en el papel.
+  OJO, sin medir todavía: (1) los 2 pads AUX de la Heltec (GPIO17/18 = I2C), en
+  el extremo opuesto al USB, posición tomada del footprint de Carlos; (2) el paso
+  de las borneras (5,08 mm).
+
+PROYECTO KiCad 10 (kicad/): esquemático + PCB + librerías del proyecto.
+Se genera por script (gen_board.py, gen_sch.py): no editar a mano.
